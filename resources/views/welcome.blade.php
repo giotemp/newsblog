@@ -1,6 +1,8 @@
 <x-layout>
 
     <div class="container">
+
+        aaaa
         <div class="row">
             @foreach ($articles as $article)
                 <div class="col-4" style="margin-bottom: 20px">
