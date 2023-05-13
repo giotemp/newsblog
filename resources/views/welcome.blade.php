@@ -1,6 +1,7 @@
 <x-layout>
 
     <div class="container">
+        <h1>Ultime notizie</h1>
         <div class="row">
             @foreach ($articles as $article)
                 <div class="col-4" style="margin-bottom: 20px">
