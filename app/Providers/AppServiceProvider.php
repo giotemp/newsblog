@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Tag;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,5 +23,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        if(Schema::hasTable('tags')) {
+            View::share('tags',Tag::all());
+        }
+
     }
 }

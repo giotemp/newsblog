@@ -14,6 +14,12 @@ Nome Completo = {{Auth::user()->detail->fullname}} <br>
                     <div class="card-body">                          
                         <p class="card-text">{{$article->body}}</p>
                       Autore : <a href="{{route('author.articles',$article->user_id)}}">{{$article->user->detail->fullname}}</a>
+                       <form method="POST" action="{{route('article.delete',compact('article'))}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Elimina articolo</button>
+                       </form>
+
                     </div>
                   </div>
             </div>

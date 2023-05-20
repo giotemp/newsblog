@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
-use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ArticleController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +21,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
-        return view('article.create');
+        return view('tag.create');
     }
 
     /**
@@ -33,24 +31,17 @@ class ArticleController extends Controller
     {
         //
 
-    
+        Tag::create([
+            'name' => $request->name
 
-        $article=Article::create([
-            'title' => $request->title,
-            'body' => $request->body,
-            'user_id'=> Auth::id()
         ]);
-
-        $article->tags()->attach($request->tags);
-
-        return redirect(route('home'))->with('status','Articolo inserito correttamente');
-        
+        return redirect(route('home'))->with('status','Tag inserito correttamente');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show(Tag $tag)
     {
         //
     }
@@ -58,7 +49,7 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -66,7 +57,7 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -74,12 +65,8 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
+    public function destroy(Tag $tag)
     {
-        $article->tags()->detach();
-        $article->delete();
-        
-        return redirect(route('home'))->with('status','Articolo eliminato correttamente');
-
+        //
     }
 }

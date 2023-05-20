@@ -10,6 +10,19 @@
                         <div class="card-body">                          
                             <p class="card-text">{{$article->body}}</p>
                           Autore : <a href="{{route('author.articles',$article->user_id)}}">{{$article->user->detail->fullname}}</a>
+                            <hr>
+                          Tags : 
+                          @foreach ($article->tags as $tag)
+                            <a href="" style="
+                                background: gray;
+                                border-radius:10px;
+                                text-decoration: none;
+                                color:white;
+                                padding:5px;"
+                            
+                            >{{$tag->name}}</a>
+                          @endforeach
+
                         </div>
                       </div>
                 </div>
@@ -17,6 +30,5 @@
             @endforeach
         </div>
     </div>
-
     
 </x-layout>
